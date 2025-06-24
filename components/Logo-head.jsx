@@ -6,7 +6,7 @@ export default function LogoHead() {
       <Image
         source={require("../assets/imgs/Logo_Head.png")}
         style={styles.logoHead}
-        resizeMode="cover"
+        resizeMode="contain"
       />
     </View>
   );
@@ -14,6 +14,7 @@ export default function LogoHead() {
 
 const styles = StyleSheet.create({
   logoHead: {
-    height: 150,
+    height: 80,
+    width: 80,
   },
 });

@@ -1,10 +1,12 @@
 import { View, Text, StyleSheet } from "react-native";
-import LogoHead from "./components/Logo-head";
+import LogoHead from "./Logo-head";
+import SearchBar from "./SearchBar";
 
-export default function HomePage() {
+export default function Header() {
   return (
     <View style={[styles.containerHeader]}>
       <LogoHead />
+      <SearchBar></SearchBar>
     </View>
   );
 }
@@ -12,6 +14,8 @@ export default function HomePage() {
 const styles = StyleSheet.create({
   containerHeader: {
     backgroundColor: "#7c49c6",
+    alignItems: "center",
     height: 150,
+    gap: 20,
   },
 });
