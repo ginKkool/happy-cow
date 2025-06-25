@@ -6,7 +6,7 @@ export default function Filters() {
 
 const styles = StyleSheet.create({
   containerFilters: {
-    height: 100,
+    height: 80,
     backgroundColor: "#f5e5c9",
   },
 });

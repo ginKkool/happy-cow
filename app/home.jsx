@@ -1,23 +1,31 @@
-import { SafeAreaView, ScrollView } from "react-native";
+import {
+  SafeAreaView,
+  View,
+  StyleSheet,
+  Platform,
+  Flatlist,
+} from "react-native";
+
 import Header from "../components/Header";
 import Filters from "../components/Filters";
-import { SafeAreaView } from "react-native-safe-area-context";
+import ListRestos from "../components/ListRestos";
+import Login from "./(auth)/login";
 
 export default function HomePage() {
   return (
     <SafeAreaView style={styles.containerHome}>
       <Header />
-      <Filters />
-      <ScrollView></ScrollView>
+
+      <ListRestos />
     </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   containerHome: {
+    backgroundColor: "#7c49c6",
     flex: 1,
-
-    justifyContent: "center",
-    alignItems: "center",
+    marginTop: Platform.OS === "android" ? Constants.statusBarHeight : 0,
+    gap: 20,
   },
 });
