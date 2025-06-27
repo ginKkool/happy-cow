@@ -1,7 +1,8 @@
 import { View, SafeAreaView, StyleSheet, Platform } from "react-native";
 
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-// import LogoHead from "../../components/LogoHead";
+import LogoHead from "../../components/LogoHead";
+
 import Title from "../../components/Title";
 import Input from "../../components/Input";
 import SignButton from "../../components/SignButton";
@@ -12,19 +13,15 @@ export default function Login() {
     <SafeAreaView style={styles.containerLogin}>
       <KeyboardAwareScrollView contentContainerStyle={styles.container}>
         <View style={styles.titleContainer}>
-          <Title content="Sign in" />
+          <LogoHead />
+          <Title content="Account" />
         </View>
         <View>
-          <Input placeholder="email" state={email} setState={setEmail} />
-          <Input
-            placeholder="Password"
-            state={password}
-            setState={setPassword}
-            secure={true}
-          />
+          <Input style={styles.input} placeholder="email" />
+          <Input placeholder="Password" secure={true} />
         </View>
         <View>
-          <SignButton text="Sign in" onPressFunc={handleSubmit} />
+          <SignButton text="Sign in" onPressFunc={() => {}} />
           <RedirectButton text={"No account ? Register !"} screen={"/signup"} />
         </View>
       </KeyboardAwareScrollView>

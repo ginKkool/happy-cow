@@ -1,12 +1,12 @@
 import { TextInput, StyleSheet } from "react-native";
 
-const Input = ({ placeholder, state, setState, secure }) => {
+const Input = ({ placeholder, secure }) => {
   return (
     <TextInput
       style={styles.textInput}
       placeholder={placeholder}
-      value={state}
-      onChangeText={setState}
+      placeholderTextColor={"#c9b99f"}
+      value={""}
       autoCapitalize="none"
       secureTextEntry={secure}
     />
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     height: 40,
     width: 300,
     margin: 12,
-    borderBottomColor: "#d6393f",
+    borderBottomColor: "#f5e5c9",
     borderBottomWidth: 1,
     padding: 10,
   },

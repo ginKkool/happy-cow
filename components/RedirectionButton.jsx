@@ -15,7 +15,7 @@ const RedirectButton = ({ text, screen }) => {
 
 const styles = StyleSheet.create({
   text: {
-    color: "#717171",
+    color: "#f5e5c9",
     textAlign: "center",
     paddingTop: 15,
   },
