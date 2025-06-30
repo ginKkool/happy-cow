@@ -11,10 +11,12 @@ import {
 } from "react-native";
 import { useFocusEffect } from "@react-navigation/native";
 import { router } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import { SafeAreaView } from "react-native-safe-area-context";
+import LogoHead from "../components/LogoHead";
 
 const FAVORITES_KEY = "@favorites_restos";
 
@@ -65,6 +67,23 @@ export default function FavoritesPage({ navigation }) {
     );
   };
 
+  const renderStars = (rating) => {
+    const stars = [];
+    const roundedRating = Math.round(rating);
+    for (let i = 0; i < 5; i++) {
+      stars.push(
+        <Ionicons
+          key={i}
+          name={i < roundedRating ? "star" : "star-outline"}
+          size={14}
+          color="#f1c40f"
+          style={{ marginRight: 2 }}
+        />
+      );
+    }
+    return stars;
+  };
+
   const renderItem = ({ item }) => (
     <View style={styles.itemContainer}>
       <TouchableOpacity
@@ -73,10 +92,17 @@ export default function FavoritesPage({ navigation }) {
           router.push({ pathname: "/fiche", params: { placeId: item.placeId } })
         }
       >
-        <Image source={{ uri: item.pictures[0] }} style={styles.image} />
+        {item.pictures && item.pictures[0] ? (
+          <Image source={{ uri: item.pictures[0] }} style={styles.image} />
+        ) : (
+          <View style={styles.logoContainer}>
+            <LogoHead />
+          </View>
+        )}
+
         <View style={styles.textContainer}>
           <Text style={styles.name}>{item.name}</Text>
-          <Text style={styles.infos}>⭐ {item.rating}</Text>
+          <View style={styles.starsContainer}>{renderStars(item.rating)}</View>
         </View>
       </TouchableOpacity>
 
@@ -114,7 +140,7 @@ const styles = StyleSheet.create({
   containerFavoris: {
     backgroundColor: "#7c49c6",
     flex: 1,
-    paddingTop: 70,
+
     marginTop: Platform.OS === "android" ? Constants.statusBarHeight : 0,
     gap: 20,
   },
@@ -162,7 +188,7 @@ const styles = StyleSheet.create({
   },
 
   deleteButton: {
-    backgroundColor: "#ff4d4d",
+    backgroundColor: "#e888ef",
     paddingVertical: 6,
     paddingHorizontal: 10,
     borderRadius: 6,
@@ -172,5 +198,20 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 12,
+  },
+  logoContainer: {
+    width: 70,
+    height: 70,
+    borderRadius: 8,
+    marginRight: 10,
+    backgroundColor: "#eee",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+
+  starsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 2,
   },
 });

@@ -6,11 +6,7 @@ export default function Header({ search, setSearch }) {
   return (
     <View style={[styles.containerHeader]}>
       <LogoHead />
-      <SearchBar
-        placeholder="Rechercher un restaurant..."
-        state={search}
-        setState={setSearch}
-      />
+      <SearchBar placeholder="Search..." state={search} setState={setSearch} />
     </View>
   );
 }

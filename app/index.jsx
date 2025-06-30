@@ -20,7 +20,6 @@ export default function Index() {
 
   return (
     <View style={styles.container}>
-      {/* Ton SplashScreen ici */}
       <Image
         source={require("../assets/imgs/Logo_Head.png")}
         style={styles.logoHead}
